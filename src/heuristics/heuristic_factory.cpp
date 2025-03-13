@@ -10,6 +10,7 @@
 #include "heuristics/maxcut/duarte2005.h"
 #include "heuristics/maxcut/festa2002.h"
 #include "heuristics/maxcut/laguna2009.h"
+#include "heuristics/maxcut/boumal2016.h"
 
 #include "heuristics/qubo/alkhamis1998.h"
 #include "heuristics/qubo/beasley1998.h"
@@ -72,6 +73,9 @@ HeuristicFactory::HeuristicFactory() {
                   "Estimation of distribution algorithm");
   max_cut_map_["BASELINE"] =
     MaxCutCreator(&NewMaxCutHeur<Baseline>, "Baseline heuristic");
+  max_cut_map_["BOUMAL2016"] =
+    MaxCutCreator(&NewMaxCutHeur<Boumal2016>,
+                  "Riemannian manifold optimization, with local search");
 
   // Register all QUBO heuristics
   qubo_map_["PALUBECKIS2004bMST1"] =
